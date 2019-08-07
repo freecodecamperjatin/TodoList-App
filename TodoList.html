@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>This is My New Web Page.</title>
+    
+        <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/fontawesome.css">
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js"></script>
+        <script src="https://kit.fontawesome.com/0263ab8139.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>    
+        
+        
+    </head>
+   
+
+<body>
+    
+    <div class="container">
+    <h1>TODO List App</h1>
+        <input type="text" placeholder="Want Do You Want to add">
+        <ul>
+            <li>Suit Up.<span><i class="fa fa-trash"></i></span></li>
+            <li>Drink Water.<span><i class="fa fa-trash"></i></span></li>
+            <li>Add Wealth.<span><i class="fa fa-trash"></i></span></li>
+            <li>Live Happy.<span><i class="fa fa-trash"></i></span></li>
+            
+        </ul>
+        
+    </div>
+    
+<!--    //jquery not working when i do the seperate .js file, hence doing it over here.-->
+    <script type="text/javascript">
+        $('input').keypress(function(){
+    
+            if(event.which === 13){
+                var todoText = $(this).val();
+                $(this).val("");
+                $('ul').append('<li>' + todoText + '.' + '<span><i class="fa fa-trash"></i></span>' + '</li>');
+            }
+        });
+        $('ul').on('click', "span", function(one){
+            $(this).parent().fadeOut(500,function(){
+                $(this).remove();
+            });
+            one.stopPropagation();
+        });
+        $('ul').on('click',"li", function(){
+            $(this).toggleClass('done');
+        });
+    </script>
+<!--    <script type="text/javascript" src="main.js"></script>-->
+</body>
+</html> 
